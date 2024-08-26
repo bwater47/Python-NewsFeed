@@ -1,3 +1,4 @@
+# This is importing the blueprint for the template to be rendered on.
 from flask import Blueprint, render_template
 
 bp = Blueprint('dashboard', __name__, url_prefix='/dashboard')
