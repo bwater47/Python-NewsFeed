@@ -1,6 +1,9 @@
+import bcrypt
 from app.db import Base
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import validates
+
+salt = bcrypt.gensalt()
 
 class User(Base):
   __tablename__ = 'users'
@@ -13,11 +16,10 @@ class User(Base):
   def validate_email(self, key, email):
     # Make sure email address contains @ character.
     assert '@' in email
-
     return email
   
   @validates('password')
   def validate_password(self, key, password):
+    # Validate and hash password before storing.
     assert len(password) > 4
-
-    return password
+    return bcrypt.hashpw(password.encode('utf-8'), salt).decode('utf-8')
