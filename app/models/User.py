@@ -23,3 +23,6 @@ class User(Base):
     # Validate and hash password before storing.
     assert len(password) > 4
     return bcrypt.hashpw(password.encode('utf-8'), salt).decode('utf-8')
+
+  def verify_password(self, password):
+    return bcrypt.checkpw(password.encode('utf-8'), self.password.encode('utf-8'))
