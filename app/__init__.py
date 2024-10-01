@@ -1,3 +1,5 @@
+from app.utils import filters
+from app.db import init_db
 from app.routes import home, dashboard
 from flask import Flask
 
@@ -9,11 +11,13 @@ def create_app(test_config=None):
     SECRET_KEY='super_secret_key'
   )
 
-  @app.route('/hello')
-  def hello():
-    return 'hello world'
+  # Register custom filters.
+  app.jinja_env.filters['format_url'] = filters.format_url
+  app.jinja_env.filters['format_date'] = filters.format_date
+  app.jinja_env.filters['format_plural'] = filters.format_plural
 
-# Register the blueprints.
+  # Register the blueprints.
   app.register_blueprint(home)
   app.register_blueprint(dashboard)
+  init_db(app)
   return app
