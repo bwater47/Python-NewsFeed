@@ -1,3 +1,4 @@
+from app.db import init_db
 from app.routes import home, dashboard
 from flask import Flask
 
@@ -9,11 +10,8 @@ def create_app(test_config=None):
     SECRET_KEY='super_secret_key'
   )
 
-  @app.route('/hello')
-  def hello():
-    return 'hello world'
-
-# Register the blueprints.
+  # Register the blueprints.
   app.register_blueprint(home)
   app.register_blueprint(dashboard)
+  init_db()
   return app
