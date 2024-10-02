@@ -1,6 +1,6 @@
 from app.utils import filters
 from app.db import init_db
-from app.routes import home, dashboard
+from app.routes import home, dashboard, api
 from flask import Flask
 
 def create_app(test_config=None):
@@ -19,5 +19,6 @@ def create_app(test_config=None):
   # Register the blueprints.
   app.register_blueprint(home)
   app.register_blueprint(dashboard)
+  app.register_blueprint(api)
   init_db(app)
   return app
