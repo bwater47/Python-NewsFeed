@@ -74,7 +74,7 @@ Python Newsfeed allows users to:
 
 - <strong>Python Newsfeed Link</strong>
 
-- [Website](https://python-newsfeed-git-182edacb47b2.herokuapp.com/)
+- [Website](https://python-newsfeeds-d87c61887daa.herokuapp.com/)
 
 - <strong>Python Newsfeed Screenshots</strong>
 
